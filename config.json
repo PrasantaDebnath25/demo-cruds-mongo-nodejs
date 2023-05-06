@@ -1,0 +1,6 @@
+﻿{
+    "APP_NAME": "Demo-crud",
+    "BACKEND_URL": "https://Notset/api/",
+    "PORT": 8000,
+    "SECRET_KEY": "demo-crud-secret-key"
+}
