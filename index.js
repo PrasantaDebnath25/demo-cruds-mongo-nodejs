@@ -4,6 +4,7 @@ const express = require('express');
 const helmet = require('helmet')
 const mongoose = require('mongoose')
 const cors = require('cors')
+import jwt from ('jsonwebtoken');
 const UserModel = require('./userModel')
 const app = express()
 
@@ -46,6 +47,7 @@ app.post('/register', async (req, res)=> {
 //     console.log(req.query)
 //     // http://localhost:8000/login?name=Pro&pass=Pro@1
 //     await UserModel.create({email: req.query.email, password: req.query.pass})
+// const token = jwt.sign({ _id: user._id }, config.SECRET_KEY);
 //     return res.send('Added')
 // })
 
