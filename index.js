@@ -29,24 +29,30 @@ app.post('/register', async (req, res)=> {
     console.log(req.body)
     // http://localhost:8000/register
     // {
+    //     "email": "pro@yopmail.com",
     //     "name":"Pro",
     //     "pass":"Pro@1"
     // }
-    await UserModel.create({user: req.body.name, password: req.body.pass})
-    return res.send('Added')
+    let users = await UserModel.create({email: req.body.email, name: req.body.name, password: req.body.pass})
+    let resBody = {
+        status: 200,
+        data: users,
+        messsage: "User created successfully"
+    }
+    return res.send(resBody)
 })
 
-app.get('/login', async (req, res)=> {
-    console.log(req.query)
-    // http://localhost:8000/login?name=Pro&pass=Pro@1
-    await UserModel.create({user: req.query.name, password: req.query.pass})
-    return res.send('Added')
-})
+// app.get('/login', async (req, res)=> {
+//     console.log(req.query)
+//     // http://localhost:8000/login?name=Pro&pass=Pro@1
+//     await UserModel.create({email: req.query.email, password: req.query.pass})
+//     return res.send('Added')
+// })
 
 app.get('/fetch-user', async (req, res)=> {
     console.log(req.query)
     // http://localhost:8000/fetch-user?id=64524f885bb6bb7fba1fa673
-    let findUser = await UserModel.findOne({_id: req.query.id }, { user: 1, password: 1  })
+    let findUser = await UserModel.findOne({_id: req.query.id }, { email: 1, password: 1  })
     console.log(findUser)
     return res.send(findUser)
 })
@@ -74,19 +80,25 @@ app.get('/delete-user', async (req, res)=> {
 
 app.delete('/delete-all-user', async (req, res)=> {
     console.log(req.query)
-    // http://localhost:8000/delete-user?id=645242602236689a298dac75
+    // http://localhost:8000/delete-all-user
     try{
         let findUser = await UserModel.deleteMany()
         console.log(findUser)
         let resBody = {
             status: 200,
-            data: findUser
+            data: findUser,
+            messsage: "Delete all user"
         }
         return res.send(resBody)
         
     }catch(err){
         // console.log(err)
-        return res.send("Err")
+        let resBody = {
+            status: 400,
+            data: findUser,
+            messsage: "Error"
+        }
+        return res.send(resBody)
     }
     
     
@@ -97,22 +109,37 @@ app.get('/list', async (req, res)=> {
     try{
         let findAllUser = await UserModel.find() //All Columns
         // let findAllUser = await UserModel.find({},{ user: 1, password: 1  })//specific Columns
-        console.log(findAllUser)
-        return res.send("All users are "+ findAllUser)
+        let resBody = {
+            status: 200,
+            data: findAllUser,
+            messsage: "All users list",
+            count: findAllUser.length
+        }
+        return res.send(resBody)
         
     }catch(err){
         // console.log(err)
-        return res.send("Err")
+        let resBody = {
+            status: 400,
+            data: findAllUser,
+            messsage: "Error",
+            count: 0
+        }
+        return res.send(resBody)
     }
     
     
 })
 
-app.get('/update', async (req, res)=> {
-    // http://localhost:8000/update?id=645256a4d642e249c147d88a&name=Pros
+app.post('/update', async (req, res)=> {
+    // http://localhost:8000/update
+    // {
+    //     "id": "6456995280e2e92727ae1dac",
+    //     "name": "P D",
+    // }
     try{
-        let updatedUser = await UserModel.updateOne({_id: req.query.id }, { user: req.query.name  }) //All Columns
-        // let updatedUser = await UserModel.updateMany({ }, { user: req.query.name  }) //All Users updated
+        let updatedUser = await UserModel.updateOne({_id: req.body.id }, { name: req.body.name  }) //All Columns
+        // let updatedUser = await UserModel.updateMany({ }, { name: req.query.name  }) //All Users updated
         console.log(updatedUser)
         let resBody = {
             status: 200,

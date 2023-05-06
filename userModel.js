@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const user = new mongoose.Schema({ //Schema Var
-    user: {
+    email: {
         type: String
     },
     password: {
@@ -9,6 +9,10 @@ const user = new mongoose.Schema({ //Schema Var
     },
     name: {
         type: String
+    },
+    status: {
+        type: String,
+        default: "A"
     },
     
 },{
