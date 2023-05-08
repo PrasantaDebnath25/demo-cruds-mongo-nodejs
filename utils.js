@@ -1,10 +1,9 @@
-var jwt = require('jsonwebtoken');
-var config = require('./config');
-const UserModel = require('./userModel');
+import jwt from 'jsonwebtoken';
+import config from './config';
+import UserModel from './userModel';
 
 const verifyToken = (req, res, next) => {
   let token;
-  console.log(req.cookies)
   if (req?.headers?.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   } else if (req?.cookies?.jwt) {
@@ -59,4 +58,5 @@ const verifyToken = (req, res, next) => {
   }
 }
 
-module.exports = verifyToken;
+// module.exports = verifyToken;
+export default verifyToken;
