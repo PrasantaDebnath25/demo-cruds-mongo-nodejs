@@ -1,13 +1,13 @@
 const uri = "mongodb+srv://prasanta-te:prasanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
 // "mongodb://localhost:27017/newDb";
-const express = require('express');
-const helmet = require('helmet')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const jwt = require('jsonwebtoken');
-const UserModel = require('./userModel')
-const config = require('./config');
-const verifyToken = require('./utils');
+import express from 'express';
+import helmet from 'helmet'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import jwt from 'jsonwebtoken';
+import UserModel from './userModel'
+import config from './config';
+import verifyToken from './utils';
 
 const app = express()
 
@@ -91,26 +91,46 @@ app.get('/fetch-user', verifyToken, async (req, res) => {
     // http://localhost:8000/fetch-user?id=64524f885bb6bb7fba1fa673
     // let findUser = await UserModel.findOne({ email: 1, password: 1 })
     // console.log(findUser)
-    return res.status(200).send(req.user)
+    const user = req.user
+    let data = {
+        status: 200,
+        message: 'Fetched successfully',
+        data: {
+            user: user
+        }
+    }
+    return res.status(200).send(data)
 
 })
 
-app.get('/delete-user', async (req, res) => {
-    console.log(req.query)
+app.get('/delete-user', verifyToken, async (req, res) => {
+    console.log("Query---",req.query)
+    console.log("user---",req.user)
     // http://localhost:8000/delete-user?id=645242602236689a298dac75
     try {
         let findUser = await UserModel.deleteOne({ _id: mongoose.Types.ObjectId(req.query.id) })
         console.log(findUser)
-        if (findUser?.deletedCount > 0) {
-            return res.send("User Deleted successfully for user id " + findUser)
-        } else {
-            return res.send("User Not found")
+        if(!findUser){
+            let data = {
+                status: 400,
+                message: 'User not found'
+            }
+            return res.status(400).send(data)
         }
 
-
+        let data = {
+            status: 200,
+            message: 'User Deleted successfully'
+        }
+        return res.status(200).send(data)
     } catch (err) {
         // console.log(err)
-        return res.send("Err")
+        let resBody = {
+            status: 400,
+            data: findUser,
+            messsage: "Error"
+        }
+        return res.status(400).send(resBody)
     }
 
 

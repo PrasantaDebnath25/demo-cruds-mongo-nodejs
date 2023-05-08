@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const user = new mongoose.Schema({ //Schema Var
     email: {
@@ -23,4 +23,5 @@ const user = new mongoose.Schema({ //Schema Var
 
 const UserModel = mongoose.model('User', user); //Collectionanasme -> 'User'
 
-module.exports = UserModel; //ModelName
+// module.exports = UserModel; //ModelName
+export default UserModel;
