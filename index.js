@@ -105,13 +105,13 @@ app.get('/fetch-user', verifyToken, async (req, res) => {
 })
 
 app.get('/delete-user', verifyToken, async (req, res) => {
-    console.log("Query---",req.query)
-    console.log("user---",req.user)
+    console.log("Query---", req.query)
+    console.log("user---", req.user)
     // http://localhost:8000/delete-user?id=645242602236689a298dac75
     try {
         let findUser = await UserModel.deleteOne({ _id: mongoose.Types.ObjectId(req.query.id) })
         console.log(findUser)
-        if(!findUser){
+        if (!findUser) {
             let data = {
                 status: 400,
                 message: 'User not found'
@@ -234,6 +234,38 @@ app.post('/subscription-create', verifyToken, async (req, res) => {
     }
     return res.status(200).send(resBody)
 })
+
+app.get('/get-subs', verifyToken, async (req, res) => {
+    // http://localhost:8000/get-subs?id=6456995280e2e92727ae1dac
+    let getSubs = await SubscriptionModel.aggregate([
+        {
+            $lookup:
+            {
+                from: "User",
+                localField: "userId",
+                foreignField: "_id",
+                as: "UserModels"
+            }
+        },
+        {
+            $unwind: { path: "$UserModels", "preserveNullAndEmptyArrays": true }
+        },
+        {
+            $match: { userId: req.query.id, status: "A" }
+        },
+        {
+            $project: { "subscriptionName": 1, "name": "$UserModels.name" }
+        }
+    ])
+
+    let resBody = {
+        status: 200,
+        data: getSubs,
+        messsage: "Subscription fetched successfully"
+    }
+    return res.status(200).send(resBody)
+})
+
 
 app.listen(8000, () => {
     console.log('Server listen-----')
