@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
 import UserModel from './userModel'
+import SubscriptionModel from './subscriptionModel'
 import config from './config';
 import verifyToken from './utils';
 
@@ -215,6 +216,23 @@ app.post('/update', async (req, res) => {
     }
 
 
+})
+
+// ======================================================================
+app.post('/subscription-create', verifyToken, async (req, res) => {
+    console.log(req.body)
+    // http://localhost:8000/subscription-create
+    // {
+    //     "subscriptionName":"Pro",
+    // }
+    const LoggedInUser = req.user
+    let users = await SubscriptionModel.create({ userId: LoggedInUser._id, subscriptionName: req.body.subscriptionName, status: req.body.status })
+    let resBody = {
+        status: 200,
+        data: users,
+        messsage: "Subscription created successfully"
+    }
+    return res.status(200).send(resBody)
 })
 
 app.listen(8000, () => {
