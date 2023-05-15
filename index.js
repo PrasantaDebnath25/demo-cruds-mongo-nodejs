@@ -6,9 +6,9 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
 import UserModel from './userModel'
-import SubscriptionModel from './subscriptionModel'
+import SubscriptionModel from './Models/subscriptionModel'
 import config from './config';
-import verifyToken from './utils';
+import verifyToken from './Utils/VerifyJWTToken';
 
 const app = express()
 
