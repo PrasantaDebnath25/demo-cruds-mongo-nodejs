@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import config from './config';
-import UserModel from './userModel';
+import config from '../config';
+import UserModel from '../Models/userModel';
 
 const verifyToken = (req, res, next) => {
   let token;
