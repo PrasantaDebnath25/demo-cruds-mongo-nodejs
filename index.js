@@ -1,4 +1,4 @@
-const uri = "mongodb+srv://prasanta-te:prasanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
+// const uri = "mongodb+srv://pro-te:prasfdanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
 // "mongodb://localhost:27017/newDb";
 import express from 'express';
 import helmet from 'helmet'
@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use(helmet()); //X-Powered-By: Express
 
-mongoose.connect(uri, {
+mongoose.connect(config.MONGO_URL, {
     useNewUrlParser: true,
     // useUnifiedTopology: true
 })
