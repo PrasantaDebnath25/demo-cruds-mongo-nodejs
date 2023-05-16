@@ -194,7 +194,7 @@ app.post('/update', async (req, res) => {
     // http://localhost:8000/update
     // {
     //     "id": "6456995280e2e92727ae1dac",
-    //     "name": "P D",
+    //     "name": "Kohli Roy",
     // }
     try {
         let updatedUser = await UserModel.updateOne({ _id: req.body.id }, { name: req.body.name }) //All Columns
@@ -223,7 +223,7 @@ app.post('/subscription-create', verifyToken, async (req, res) => {
     console.log(req.body)
     // http://localhost:8000/subscription-create
     // {
-    //     "subscriptionName":"Pro",
+    //     "subscriptionName":"Subs 1",
     // }
     const LoggedInUser = req.user
     let users = await SubscriptionModel.create({ userId: LoggedInUser._id, subscriptionName: req.body.subscriptionName, status: req.body.status })
