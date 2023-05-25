@@ -3,6 +3,7 @@ import config from '../config';
 import UserModel from '../Models/userModel';
 
 const verifyToken = (req, res, next) => {
+  console.log(req.body);
   let token;
   if (req?.headers?.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
