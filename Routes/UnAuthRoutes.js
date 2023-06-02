@@ -5,9 +5,6 @@ import jwt from 'jsonwebtoken';
 
 export default function UnAuthRoute(app) {
 
-    /*--------------- Unauthorised Routes Start Here -------------------------*/
-    // app.use('/api', api_router);
-
 
     //UnAuthController
     app.post('/register', UnAuthController.register);
