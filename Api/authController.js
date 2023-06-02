@@ -102,3 +102,31 @@ exports.userList = async (req, res) => {
 
 
 }
+
+exports.updateUser = async (req, res) => {
+    // http://localhost:8000/api/update
+    // {
+    //     "id": "64524f885bb6bb7fba1fa673",
+    //     "name": "Kohli Roy",
+    // }
+    try {
+        let updatedUser = await UserModel.updateOne({ _id: req.body.id }, { name: req.body.name }) //All Columns
+        // let updatedUser = await UserModel.updateMany({ }, { name: req.query.name  }) //All Users updated
+        console.log(updatedUser)
+        let resBody = {
+            status: 200,
+            data: updatedUser
+        }
+        return res.send(resBody)
+
+    } catch (err) {
+        console.log(err)
+        let resBody = {
+            status: 400,
+            data: err
+        }
+        return res.send(resBody)
+    }
+
+
+}

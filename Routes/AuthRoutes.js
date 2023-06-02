@@ -20,5 +20,6 @@ export default function AuthRoute(app) {
     auth_api_router.get('/delete-user', AuthController.deleteUser);
     auth_api_router.delete('/delete-all-user', AuthController.deleteAllUser);
     auth_api_router.get('/user-list', AuthController.userList);
+    auth_api_router.post('/update', AuthController.updateUser);
     
 }
