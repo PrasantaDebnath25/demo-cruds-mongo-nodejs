@@ -14,6 +14,7 @@ const verifyToken = (req, res, next) => {
     token = req.body.accessToken || req.query.accessToken || req.headers['x-access-token'];
     // console.log(token);
   }
+  
   if (token) {
     new Promise((resolve, reject) => {
       jwt.verify(token, config.SECRET_KEY, function (err, decoded) {
