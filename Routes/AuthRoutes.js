@@ -1,6 +1,8 @@
 import UserModel from "../Models/userModel"
 import jwt from 'jsonwebtoken';
 import AuthController from "../Api/authController"
+import SubscriptionController from "../Api/subscriptionController"
+
 import verifyToken from "../Utils/VerifyJWTToken";
 import express from 'express';
 // const api_router = express.Router();
@@ -21,5 +23,8 @@ export default function AuthRoute(app) {
     auth_api_router.delete('/delete-all-user', AuthController.deleteAllUser);
     auth_api_router.get('/user-list', AuthController.userList);
     auth_api_router.post('/update', AuthController.updateUser);
+
+    //Auth Controller
+    auth_api_router.post('/subscription-create', SubscriptionController.createSubscription);
     
 }
