@@ -1,5 +1,6 @@
 // const uri = "mongodb+srv://pro-te:prasfdanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
 // "mongodb://localhost:27017/newDb";
+// npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
 import express from 'express';
 import helmet from 'helmet'
 import mongoose from 'mongoose'
