@@ -1,12 +1,11 @@
 // const uri = "mongodb+srv://pro-te:prasfdanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
 // "mongodb://localhost:27017/newDb";
-// npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
 import express from 'express';
 import helmet from 'helmet'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
-import UserModel from './Models/userModel' 
+import UserModel from './Models/userModel'
 import SubscriptionModel from './Models/subscriptionModel'
 import config from './config';
 import verifyToken from './Utils/VerifyJWTToken';
@@ -226,21 +225,21 @@ UnAuthRoute(app)
 // })
 
 // ===========================Subscription===========================================
-app.post('/subscription-create', verifyToken, async (req, res) => {
-    console.log(req.body)
-    // http://localhost:8000/subscription-create
-    // {
-    //     "subscriptionName":"Subs 1",
-    // }
-    const LoggedInUser = req.user
-    let users = await SubscriptionModel.create({ userId: LoggedInUser._id, subscriptionName: req.body.subscriptionName, status: req.body.status })
-    let resBody = {
-        status: 200,
-        data: users,
-        messsage: "Subscription created successfully"
-    }
-    return res.status(200).send(resBody)
-})
+// app.post('/subscription-create', verifyToken, async (req, res) => {
+//     console.log(req.body)
+//     // http://localhost:8000/subscription-create
+//     // {
+//     //     "subscriptionName":"Subs 1",
+//     // }
+//     const LoggedInUser = req.user
+//     let users = await SubscriptionModel.create({ userId: LoggedInUser._id, subscriptionName: req.body.subscriptionName, status: req.body.status })
+//     let resBody = {
+//         status: 200,
+//         data: users,
+//         messsage: "Subscription created successfully"
+//     }
+//     return res.status(200).send(resBody)
+// })
 
 app.get('/get-subs', verifyToken, async (req, res) => {
     // http://localhost:8000/get-subs?id=64524f885bb6bb7fba1fa673
