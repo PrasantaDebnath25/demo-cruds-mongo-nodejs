@@ -77,7 +77,7 @@ exports.deleteAllUser = async (req, res) => {
 }
 
 exports.userList = async (req, res) => {
-    // http://localhost:8000/list
+    // http://localhost:8000/api/list
     try {
         let findAllUser = await UserModel.find() //All Columns
         // let findAllUser = await UserModel.find({},{ user: 1, password: 1  })//specific Columns
