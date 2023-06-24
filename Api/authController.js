@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 import verifyToken from "../Utils/VerifyJWTToken";
 
+//Fetch logged in user
 exports.fetchUser = async (req, res) => {
     // let response = await verifyToken();
     // console.log("req---", req.user)
