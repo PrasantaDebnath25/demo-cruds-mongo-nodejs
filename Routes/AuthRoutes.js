@@ -26,5 +26,7 @@ export default function AuthRoute(app) {
 
     //Auth Controller
     auth_api_router.post('/subscription-create', SubscriptionController.createSubscription);
+    auth_api_router.post('/get-subs', SubscriptionController.getSubscription);
+    
     
 }
