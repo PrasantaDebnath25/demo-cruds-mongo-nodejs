@@ -6,7 +6,7 @@ import SubscriptionModel from "../Models/subscriptionModel";
 
 exports.createSubscription = async (req, res) => {
     console.log(req.body)
-    // http://localhost:8000/subscription-create
+    // http://localhost:8000/api/subscription-create
     // {
     //     "subscriptionName":"Subs 1",
     // }
@@ -21,8 +21,10 @@ exports.createSubscription = async (req, res) => {
 
 }
 
+// logged in User Subscription list
 exports.getSubscription = async (req, res) => {
-    // http://localhost:8000/get-subs?id=64524f885bb6bb7fba1fa673
+    // http://localhost:8000/api/get-subscription
+    const LoggedInUser = req.user
     let getSubs = await SubscriptionModel.aggregate([
         {
             $lookup:
@@ -37,7 +39,7 @@ exports.getSubscription = async (req, res) => {
             $unwind: { path: "$UserModels", "preserveNullAndEmptyArrays": true }
         },
         {
-            $match: { userId: req.query.id, status: "A" }
+            $match: { userId: LoggedInUser._id, status: "A" }
         },
         {
             $project: { "subscriptionName": 1, "name": "$UserModels.name" }
