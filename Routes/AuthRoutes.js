@@ -1,11 +1,11 @@
-import UserModel from "../Models/userModel"
-import jwt from 'jsonwebtoken';
+// import UserModel from "../Models/userModel"
+// import jwt from 'jsonwebtoken';
 import AuthController from "../Api/authController"
 import SubscriptionController from "../Api/subscriptionController"
 
 import verifyToken from "../Utils/VerifyJWTToken";
 import express from 'express';
-// const api_router = express.Router();
+
 const auth_api_router = express.Router();
 
 auth_api_router.use(verifyToken);
