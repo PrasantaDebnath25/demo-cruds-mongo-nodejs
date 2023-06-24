@@ -29,7 +29,7 @@ const verifyToken = (req, res, next) => {
       });
       if (!user) {
         return res.status(403).send({
-          status: 400,
+          status: 401,
           errors: 'Invalid user or token'
         });
       }
@@ -54,7 +54,7 @@ const verifyToken = (req, res, next) => {
   } else {
 
     return res.status(401).send({
-      status: 400,
+      status: 401,
       errors: 'Missing authorization token'
     });
   }
