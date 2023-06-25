@@ -18,6 +18,6 @@ const subscription = new mongoose.Schema({ //Schema Var
 });
 
 
-const SubscriptionModel = mongoose.model('Subscription', subscription); //Collectionanasme -> 'Subscription'
+const SubscriptionModel = mongoose.model('Subscription', subscription);  //Collectionanasme -> 'Subscription'
 
 export default SubscriptionModel;
