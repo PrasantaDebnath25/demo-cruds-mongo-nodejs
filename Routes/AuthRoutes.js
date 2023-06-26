@@ -16,7 +16,6 @@ export default function AuthRoute(app) {
     /*--------------- unaurthorised Routes Start Here -------------------------*/
     app.use('/api', auth_api_router);
 
-
     // app.use(verifyToken);
 
     //Auth Controller
