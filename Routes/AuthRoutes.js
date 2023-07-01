@@ -24,7 +24,7 @@ export default function AuthRoute(app) {
     auth_api_router.get('/user-list', AuthController.userList);
     auth_api_router.post('/update', AuthController.updateUser);
 
-    //Auth Controller
+    //Subscription Controller
     auth_api_router.post('/subscription-create', SubscriptionController.createSubscription);
     auth_api_router.post('/get-subscription', SubscriptionController.getSubscription);
     
