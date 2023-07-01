@@ -56,7 +56,6 @@ const login = async (req, res) => {
             user: user
         }
     });
-    // return res.send('Added')
 }
 
 export default {register, login}
