@@ -39,7 +39,7 @@ const login = async (req, res) => {
     }
     console.log("User---", user)
     const token = jwt.sign({ _id: user._id }, config.SECRET_KEY);
-    console.log("token---", token)
+    console.log("Jwt token---", token)
 
     res.cookie('jwt', token, {
         httpOnly: true,
@@ -56,7 +56,6 @@ const login = async (req, res) => {
             user: user
         }
     });
-    // return res.send('Added')
 }
 
 export default {register, login}
