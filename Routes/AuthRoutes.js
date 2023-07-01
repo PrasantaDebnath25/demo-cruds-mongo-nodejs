@@ -8,12 +8,14 @@ import express from 'express';
 
 const auth_api_router = express.Router();
 
+//Use Token verification
 auth_api_router.use(verifyToken);
 
 export default function AuthRoute(app) {
     
     /*--------------- unaurthorised Routes Start Here -------------------------*/
     app.use('/api', auth_api_router);
+
 
     // app.use(verifyToken);
 
