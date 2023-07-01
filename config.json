@@ -1,6 +1,6 @@
 ﻿{
     "APP_NAME": "Demo-crud",
-    "BACKEND_URL": "https://Notset/api/",
+    "BACKEND_URL": "http://localhost:8000/",
     "PORT": 8000,
     "SECRET_KEY": "demo-crud-secret-key",
     "MONGO_URL": "mongodb+srv://prasanta-te:prasanta@cluster0.txhljuf.mongodb.net/?retryWrites=true&w=majority"
