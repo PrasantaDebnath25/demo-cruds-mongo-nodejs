@@ -12,7 +12,7 @@ auth_api_router.use(verifyToken);
 
 export default function AuthRoute(app) {
     
-    /*--------------- uthorised Routes Start Here -------------------------*/
+    /*--------------- unaurthorised Routes Start Here -------------------------*/
     app.use('/api', auth_api_router);
 
     // app.use(verifyToken);
