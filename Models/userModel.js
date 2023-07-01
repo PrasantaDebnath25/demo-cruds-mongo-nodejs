@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const user = new mongoose.Schema({ //Schema Var
+const user = new mongoose.Schema({ //Schema Variable user
     email: {
         type: String
     },
@@ -23,5 +23,5 @@ const user = new mongoose.Schema({ //Schema Var
 
 const UserModel = mongoose.model('User', user); //Collectionanasme -> 'User'
 
-// module.exports = UserModel; //ModelName
+// module.exports = UserModel; //ModelName for previous version
 export default UserModel;
