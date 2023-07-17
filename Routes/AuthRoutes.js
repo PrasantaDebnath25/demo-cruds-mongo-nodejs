@@ -18,7 +18,6 @@ export default function AuthRoute(app) {
 
     // app.use(verifyToken);
 
-
     //Auth Controller
     auth_api_router.get('/fetch-user', AuthController.fetchUser);
     auth_api_router.get('/delete-user', AuthController.deleteUser);
