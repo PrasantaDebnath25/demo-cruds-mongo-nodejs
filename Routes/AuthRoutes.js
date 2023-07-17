@@ -13,12 +13,12 @@ auth_api_router.use(verifyToken);
 
 export default function AuthRoute(app) {
     
-    /*--------------- unaurthorised Routes Start Here ------------------------*/
+    /*--------------- unaurthorised Routes Start Here ----------------------*/
     app.use('/api', auth_api_router);
 
     // app.use(verifyToken);
 
-    
+
     //Auth Controller
     auth_api_router.get('/fetch-user', AuthController.fetchUser);
     auth_api_router.get('/delete-user', AuthController.deleteUser);
