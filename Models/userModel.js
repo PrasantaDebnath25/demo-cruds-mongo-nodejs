@@ -14,8 +14,8 @@ const user = new mongoose.Schema({ //Schema Variable user
         type: String,
         default: "A"
     },
-    
-},{
+
+}, {
     timestamps: true,
     versionKey: false
 });
