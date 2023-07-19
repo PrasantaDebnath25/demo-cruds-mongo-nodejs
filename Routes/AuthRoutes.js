@@ -12,7 +12,7 @@ const auth_api_router = express.Router();
 auth_api_router.use(verifyToken);
 
 export default function AuthRoute(app) {
-    
+
     /*--------------- unaurthorised Routes Start Here ----------------------*/
     app.use('/api', auth_api_router);
 
@@ -28,6 +28,6 @@ export default function AuthRoute(app) {
     //Subscription Controller
     auth_api_router.post('/subscription-create', SubscriptionController.createSubscription);
     auth_api_router.post('/get-subscription', SubscriptionController.getSubscription);
-    
-    
+
+
 }
