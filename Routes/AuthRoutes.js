@@ -1,5 +1,5 @@
 // import UserModel from "../Models/userModel"
-// import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken'; 
 import AuthController from "../Api/authController"
 import SubscriptionController from "../Api/subscriptionController"
 
