@@ -1,5 +1,5 @@
 // import UserModel from "../Models/userModel"
-// import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken'; 
 import AuthController from "../Api/authController"
 import SubscriptionController from "../Api/subscriptionController"
 
@@ -12,8 +12,8 @@ const auth_api_router = express.Router();
 auth_api_router.use(verifyToken);
 
 export default function AuthRoute(app) {
-    
-    /*--------------- unaurthorised Routes Start Here -------------------------*/
+
+    /*--------------- unaurthorised Routes Start Here ----------------------*/
     app.use('/api', auth_api_router);
 
     // app.use(verifyToken);
@@ -28,6 +28,6 @@ export default function AuthRoute(app) {
     //Subscription Controller
     auth_api_router.post('/subscription-create', SubscriptionController.createSubscription);
     auth_api_router.post('/get-subscription', SubscriptionController.getSubscription);
-    
-    
+
+
 }
