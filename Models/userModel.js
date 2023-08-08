@@ -23,5 +23,5 @@ const user = new mongoose.Schema({ //Schema variable user
 
 const UserModel = mongoose.model('User', user); //Collectionanasme -> 'User'
 
-// module.exports = UserModel; //ModelName for previous version
+// module.exports = UserModel; //ModelName for previous 
 export default UserModel;
