@@ -1,4 +1,3 @@
-import UserModel from "../Models/userModel"
 import SubscriptionModel from "../Models/subscriptionModel";
 
 exports.createSubscription = async (req, res) => {
