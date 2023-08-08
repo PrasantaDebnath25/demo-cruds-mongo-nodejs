@@ -1,6 +1,5 @@
 import UserModel from "../Models/userModel"
 import jwt from 'jsonwebtoken';
-import config from '../config';
 import SubscriptionModel from "../Models/subscriptionModel";
 
 exports.createSubscription = async (req, res) => {
